@@ -14,7 +14,9 @@ const GameStatus = {
 	PAUSE: 2,
 	GAMEOVER: 3
 }
-let gameStatus;
+
+let gameStatus=GameStatus.NOTSTART;
+
 var _audioPlayer = null;
 /*
     function allowDrop(event)
@@ -33,16 +35,17 @@ function ClickVariant(data) {
 	if(removeExtension(_QuestMusic) == data.value) {
 		_score++;
 		data.style.background = 'green'
+        if (gameStatus!=GameStatus.NOTSTART) enableDisabled()
 		for(let i = 0; i < elements.length; i++)
 			if(elements[i] != data) elements[i].style.background = 'gray';
-        enableDisabled()
+        
 	} else {
 		_score--;
 		data.style.background = 'red'
 		elements = document.getElementsByClassName('variants')
 		for(let i = 0; i < elements.length; i++)
 			if(elements[i] != data) elements[i].style.background = 'gray';
-        enableDisabled()
+        if (gameStatus!=GameStatus.NOTSTART) enableDisabled()
 	}
 	document.querySelector('#td_score').innerHTML = _score;
 	/* document.getElementById('variant1').style.disabled = true;
@@ -70,7 +73,8 @@ function Tick() {
 
 function InitEnableDisabled() {
     Init()
-    enableDisabled()
+    
+//    enableDisabled()
 }
 
 
@@ -78,7 +82,7 @@ function Start(data) {
 	_musicList = data;
 	_score = 0;
 	timeEllipsed = 0;
-	NextQuestion();
+	//NextQuestion();
 }
 
 function disableDisabled() {
@@ -93,14 +97,17 @@ function enableDisabled() {
 	document.getElementById('variant2').setAttribute('disabled', '');
 	document.getElementById('variant3').setAttribute('disabled', '');
 	document.getElementById('variant4').setAttribute('disabled', '');
+   
 }
 
 function PlayButtonClick() {
 	if(timer == null) {
 		timer = setInterval(Tick, 1000);
 		AudioStop()
+        NextQuestion();
 		_audioPlayer.play()
 		disableDisabled()
+        gameStatus=GameStatus.PLAY;
 	} else {
 		NextQuestion();
 	}
@@ -141,6 +148,7 @@ function NextQuestion() {
 		let memosN = getRandomInt(0, 10);
 		document.getElementById("memoImg").src = 'memos/' + memosN + '.jpg';
 	}
+    
 }
 
 function Result() {
@@ -186,6 +194,12 @@ function LoadMusicList(urlPHP) {
 		Start(data)
 	}).catch(function(error) {
 		console.log("Error:", error);
-		alert('Не могу загрузить данные. Попробуйте позже')
+		//swal2('Не могу загрузить данные. Попробуйте позже')
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: '<a href="#">Why do I have this issue?</a>'
+        });
 	});
 }

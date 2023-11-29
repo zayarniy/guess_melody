@@ -6,13 +6,14 @@
 	<meta charset='utf-8' />
 	<link rel='stylesheet' href="style.css" />
 	<script src="script_a0.js"></script>
+    <script src='sweetalert2.js'></script>
 </head>
 
 <body onload="InitEnableDisabled()">
 	<header> <img src="logo01.png" style='height: 140%; margin-top: -20px;'>
 		<div class='header_button'>
 			<a href='https://yandex.ru'>
-				<button class='exit_button'>Выход</button>
+				
 			</a>
 		</div>
 	</header>
@@ -26,7 +27,7 @@
 				<td>Время
 					<br> <span id='td_ellipsedTime'> 0</span> </td>
 				<td>
-					<button class="button_next" onclick='PlayButtonClick()' id="button_next">Start</button>
+					<button class='exit_button'>Выход</button>
 				</td>
 			</tr>
 		</table>
@@ -37,13 +38,13 @@
 			</button>
 		</div>
 		<div style='text-align: center'>
-			<input type="button" value='Название 1' class='variants' id='variant1' onclick="ClickVariant(this)">
+			<input type="button" value='Название 1' class='variants' id='variant1' onclick="ClickVariant(this)" disabled>
 			<br>
-			<input type="button" value='Название 2' class='variants' id='variant2' onclick="ClickVariant(this)">
+			<input type="button" value='Название 2' class='variants' id='variant2' onclick="ClickVariant(this)" disabled>
 			<br>
-			<input type="button" value='Название 3' class='variants' id='variant3' onclick="ClickVariant(this)">
+			<input type="button" value='Название 3' class='variants' id='variant3' onclick="ClickVariant(this)" disabled>
 			<br>
-			<input type="button" value='Название 4' class='variants' id='variant4' onclick="ClickVariant(this)">
+			<input type="button" value='Название 4' class='variants' id='variant4' onclick="ClickVariant(this)" disabled>
 			<br> </div>
 		<div class='footer'> Text
 			<br>
