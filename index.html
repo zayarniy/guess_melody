@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Угадай мелодию</title>
+	<meta charset='utf-8' />
+	<link rel='stylesheet' href="style.css" />
+	<script src="script_a0.js"></script>
+</head>
+
+<body onload="InitEnableDisabled()">
+	<header> <img src="logo01.png" style='height: 140%; margin-top: -20px;'>
+		<div class='header_button'>
+			<a href='https://yandex.ru'>
+				<button class='exit_button'>Выход</button>
+			</a>
+		</div>
+	</header>
+	<main>
+		<table>
+			<tr>
+				<td>Баллы
+					<br> <span id='td_score'>0</span> </td>
+				<td>Осталось
+					<br> <span id='td_countLeft'>0</span> </td>
+				<td>Время
+					<br> <span id='td_ellipsedTime'> 0</span> </td>
+				<td>
+					<button class="button_next" onclick='PlayButtonClick()' id="button_next">Start</button>
+				</td>
+			</tr>
+		</table>
+		<div class='cat_div'>
+			<button id='playMusic' onclick='PlayButtonClick()' class='catButton'>
+				<p class='cat'> <img src='memos/cat.jpg' alt='Кот.жпг' class='cat_img' id="memoImg">
+					<br> Прослушать музыку (клик) </p>
+			</button>
+		</div>
+		<div style='text-align: center'>
+			<input type="button" value='Название 1' class='variants' id='variant1' onclick="ClickVariant(this)">
+			<br>
+			<input type="button" value='Название 2' class='variants' id='variant2' onclick="ClickVariant(this)">
+			<br>
+			<input type="button" value='Название 3' class='variants' id='variant3' onclick="ClickVariant(this)">
+			<br>
+			<input type="button" value='Название 4' class='variants' id='variant4' onclick="ClickVariant(this)">
+			<br> </div>
+		<div class='footer'> Text
+			<br>
+			<br> <address>goldmark.ru@yahoo.com <br> <br>+79999999999</address> </div>
+	</main>
+	<footer></footer>
+    </body>
+</html>
